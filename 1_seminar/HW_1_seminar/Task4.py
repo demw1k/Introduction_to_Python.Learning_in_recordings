@@ -5,3 +5,12 @@
 
 # 3 2 4 -> yes
 # 3 2 1 -> no
+
+n = int(input("Введите длину шоколадки: "))
+m = int(input("Введите ширину шоколадки: "))
+k = int(input("Сколько долек хотите отломить???"))
+
+if k < n * m and k % n == 0 or k % m == 0:
+    print("yes")
+else:
+    print("no") 
