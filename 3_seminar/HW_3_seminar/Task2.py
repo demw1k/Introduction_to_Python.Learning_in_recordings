@@ -19,6 +19,9 @@ m = int(input("Введите число для проверки самого б
 
 
 for i in range(len(list_1)):
-    var = m - list_1[i]
-    
-print(count)
+    var = m - list_1[0]
+    var2 = m - list_1[i]
+    x = var
+    if x < var2:
+        x == var2
+print(x)
