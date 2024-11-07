@@ -24,8 +24,37 @@
 # Вывод:
 # 12
 
-n = input("Введите слово: ")
+def scrabble_score(word):
+    english_scores = {
+        'A': 1, 'E': 1, 'I': 1, 'O': 1, 'U': 1, 'L': 1, 'N': 1, 'S': 1, 'T': 1, 'R': 1,
+        'D': 2, 'G': 2,
+        'B': 3, 'C': 3, 'M': 3, 'P': 3,
+        'F': 4, 'H': 4, 'V': 4, 'W': 4, 'Y': 4,
+        'K': 5,
+        'J': 8, 'X': 8,
+        'Q': 10, 'Z': 10
+    }
 
-dict1 = { '1' : 'А, В, Е, И, Н, О, Р, С, Т' , '2' : 'Д, К, Л, М, П, У', '3': 'Б, Г, Ё, Ь, Я',
-'4' : 'Й, Ы', '5' : 'Ж, З, Х, Ц, Ч', '8': 'Ш, Э, Ю', '10': 'Ф, Щ, Ъ'}
-print(dict1)
+    russian_scores = {
+        'А': 1, 'В': 1, 'Е': 1, 'И': 1, 'Н': 1, 'О': 1, 'Р': 1, 'С': 1, 'Т': 1,
+        'Д': 2, 'К': 2, 'Л': 2, 'М': 2, 'П': 2, 'У': 2,
+        'Б': 3, 'Г': 3, 'Ё': 3, 'Ь': 3, 'Я': 3,
+        'Й': 4, 'Ы': 4,
+        'Ж': 5, 'З': 5, 'Х': 5, 'Ц': 5, 'Ч': 5,
+        'Ш': 8, 'Э': 8, 'Ю': 8,
+        'Ф': 10, 'Щ': 10, 'Ъ': 10
+    }
+
+    word = word.upper()
+    if all(letter in english_scores for letter in word):
+        score = sum(english_scores.get(letter, 0) for letter in word)
+    elif all(letter in russian_scores for letter in word):
+        score = sum(russian_scores.get(letter, 0) for letter in word)
+    else:
+        return "Ошибка: слово содержит буквы разных алфавитов."
+
+    return f"Стоимость слова '{word}' составляет {score} очков."
+
+# Пример использования
+word_input = input("Введите слово: ")
+print(scrabble_score(word_input))
